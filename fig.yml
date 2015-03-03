@@ -1,0 +1,27 @@
+postgresql:
+  image: sameersbn/postgresql:9.4
+  environment:
+    - DB_USER=gitlab
+    - DB_PASS=secretpassword
+    - DB_NAME=gitlabhq_production
+gitlab:
+  image: wemanity/gitlab:1.0
+  links:
+   - redis:redisio
+   - postgresql:postgresql
+  ports:
+   - "10080:80"
+   - "10022:22"
+redis:
+  image: sameersbn/redis:latest
+jenkins:
+  image: wemanity/jenkins:1.0
+  links:
+   - nexus:nexus
+   - gitlab:gitlab
+  ports:
+   - "18080:8080"
+nexus:
+  image: aespinosa/nexus
+  ports:
+   - "18081:8081"
