@@ -21,7 +21,10 @@ jenkins:
    - gitlab:gitlab
   ports:
    - "18080:8080"
+   - "10023:22"
+  volumes:
+   - /home/pguilbault/git/usine-logicielle/:/opt/source/
 nexus:
-  image: aespinosa/nexus
+  image: wemanity/nexus:1.0
   ports:
    - "18081:8081"
