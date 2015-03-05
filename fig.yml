@@ -28,3 +28,9 @@ nexus:
   image: wemanity/nexus:1.0
   ports:
    - "18081:8081"
+elk:
+  image: wemanity/elk:1.0
+  ports:
+   - "15000:5000"
+   - "15601:5601"
+   - "19200:9200"
